@@ -1,0 +1,24 @@
+
+.ump-btn{
+    display: inline-block;
+    width: 40%;
+    padding: 20px;
+    font-size: 20px;
+    margin: 0 2%;
+    border: 1px solid #cccccc;
+    background: #f8f8f8;
+    text-align: center;
+    text-transform: uppercase;
+    color: #444444;
+    text-decoration: none;
+}
+
+.ump-like-btn:hover{
+    background-color: #2d8f58; 
+    color: #ffffff;
+}
+
+.ump-dislike-btn:hover{
+    background-color: #fc5a51; 
+    color: #ffffff;
+}

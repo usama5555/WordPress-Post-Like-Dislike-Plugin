@@ -2,6 +2,8 @@
 
 **UM Post Like & Dislike** is a WordPress plugin that allows users to like and dislike posts. It dynamically updates the like and dislike counts without needing a page reload, providing a seamless user experience.
 
+![4](https://github.com/user-attachments/assets/e4da4352-4a3e-41ac-b82b-2b92c2f5effc)
+
 ## Features
 
 - Like and dislike buttons for each post.

@@ -2,7 +2,7 @@
 function ump_like_btn_ajax(postId, usrId) {
     var post_id = postId;
     var usr_id = usrId;
-    
+
     jQuery.ajax({
         url: ump_ajax_url.ajax_url,
         type: 'post',
@@ -12,11 +12,10 @@ function ump_like_btn_ajax(postId, usrId) {
             uid: usr_id
         },
         success: function(response) {
-            jQuery("#umpAjaxResponse span").html(response);
-            // Update the like count
-            // jQuery("#like_count_" + post_id).text(response.like_count);
-            // // Update the dislike count to zero
-            // jQuery("#dislike_count_" + post_id).text(0);
+            var data = JSON.parse(response);
+            jQuery("#umpAjaxResponse span").html('You Liked this post.');
+            jQuery("#like_count span").text(data.like_count);
+            jQuery("#dislike_count span").text(data.dislike_count);
         }
     });
 }
@@ -25,7 +24,7 @@ function ump_like_btn_ajax(postId, usrId) {
 function ump_dislike_btn_ajax(postId, usrId) {
     var post_id = postId;
     var usr_id = usrId;
-    
+
     jQuery.ajax({
         url: ump_ajax_url.ajax_url,
         type: 'post',
@@ -35,11 +34,10 @@ function ump_dislike_btn_ajax(postId, usrId) {
             uid: usr_id
         },
         success: function(response) {
-            jQuery("#umpAjaxResponse span").html(response);
-            // Update the dislike count
-            // jQuery("#dislike_count_" + post_id).text(response.dislike_count);
-            // // Update the like count to zero
-            // jQuery("#like_count_" + post_id).text(0);
+            var data = JSON.parse(response);
+            jQuery("#umpAjaxResponse span").html('You Disliked this post.');
+            jQuery("#like_count span").text(data.like_count);
+            jQuery("#dislike_count span").text(data.dislike_count);
         }
     });
 }

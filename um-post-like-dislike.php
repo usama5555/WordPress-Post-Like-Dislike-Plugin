@@ -97,7 +97,12 @@ function ump_like_btn_ajax_action() {
                 )
             );
         }
-        echo 'You liked this post.';
+        
+        // Return updated like and dislike counts
+        $like_count = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM $table_name WHERE post_id = %d AND like_count = 1", $post_id));
+        $dislike_count = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM $table_name WHERE post_id = %d AND dislike_count = 1", $post_id));
+
+        echo json_encode(array('like_count' => $like_count, 'dislike_count' => $dislike_count));
     }
 
     wp_die();
@@ -105,18 +110,8 @@ function ump_like_btn_ajax_action() {
 add_action('wp_ajax_ump_like_btn_ajax_action', 'ump_like_btn_ajax_action');
 add_action('wp_ajax_nopriv_ump_like_btn_ajax_action', 'ump_like_btn_ajax_action');
 
-// Shows like count on the post
-function ump_show_like_count($content) {
-    global $wpdb;
-    $table_name = $wpdb->prefix . "ump_like_system";
-    $post_id = get_the_ID();
-    $like_count = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM $table_name WHERE post_id = %d AND like_count = 1", $post_id));
-    $like_count_result = '<center>This post has been liked <strong>' . $like_count . '</strong> time(s)</center>';
 
-    $content .= $like_count_result;
-    return $content;
-}
-add_filter('the_content', 'ump_show_like_count');
+
 
 // Plugin Dislike Btn Ajax Function
 function ump_dislike_btn_ajax_action() {
@@ -170,7 +165,12 @@ function ump_dislike_btn_ajax_action() {
                 )
             );
         }
-        echo 'You disliked this post.';
+        
+         // Return updated like and dislike counts
+         $like_count = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM $table_name WHERE post_id = %d AND like_count = 1", $post_id));
+         $dislike_count = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM $table_name WHERE post_id = %d AND dislike_count = 1", $post_id));
+ 
+         echo json_encode(array('like_count' => $like_count, 'dislike_count' => $dislike_count));
     }
 
     wp_die();
@@ -178,15 +178,5 @@ function ump_dislike_btn_ajax_action() {
 add_action('wp_ajax_ump_dislike_btn_ajax_action', 'ump_dislike_btn_ajax_action');
 add_action('wp_ajax_nopriv_ump_dislike_btn_ajax_action', 'ump_dislike_btn_ajax_action');
 
-// Shows dislike count on the post
-function ump_show_dislike_count($content) {
-    global $wpdb;
-    $table_name = $wpdb->prefix . "ump_like_system";
-    $post_id = get_the_ID();
-    $dislike_count = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM $table_name WHERE post_id = %d AND dislike_count = 1", $post_id));
-    $dislike_count_result = '<center>This post has been disliked <strong>' . $dislike_count . '</strong> time(s)</center>';
 
-    $content .= $dislike_count_result;
-    return $content;
-}
-add_filter('the_content', 'ump_show_dislike_count');
+

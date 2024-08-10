@@ -41,6 +41,8 @@ No additional setup is required.
 2. **Customize button labels:**
 
 - You can customize the labels for the like and dislike buttons from the plugin settings page.
+  
+![5](https://github.com/user-attachments/assets/b04fc952-5828-4f8e-91d9-1bb26ed09b5e)
 
 ## Author
 [Usama Maqsood](www.linkedin.com/in/usama55)
